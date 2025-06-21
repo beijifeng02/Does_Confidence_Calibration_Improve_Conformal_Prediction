@@ -36,13 +36,13 @@ class Predictor(nn.Module):
         logits = self._preprocessor(logits, softmax=False)
         self.calculate_threshold(logits, labels)
 
-    def calculate_threshold(self, logits, labels):
+    def calculate_threshold(self, logits, labels, random=True):
         alpha = self.alpha
         if alpha >= 1 or alpha <= 0:
             raise ValueError("Significance level 'alpha' must be in (0,1).")
         logits = logits.to(self._device)
         labels = labels.to(self._device)
-        scores = self.score_function(logits, labels, random=self.random)
+        scores = self.score_function(logits, labels, random=random)
         self.q_hat = self._calculate_conformal_value(scores, alpha)
 
     def _calculate_conformal_value(self, scores, alpha):

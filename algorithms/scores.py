@@ -1,6 +1,15 @@
 import torch
 
 
+def build_score(conformal, penalty=None):
+    if conformal == "aps":
+        return aps()
+    elif conformal == "raps":
+        return raps(penalty=penalty)
+    else:
+        return NotImplementedError
+
+
 class aps(object):
     def __call__(self, logits, label=None, random=True):
         assert len(logits.shape) <= 2, "The dimension of logits must be less than 2."

@@ -2,11 +2,11 @@ import warnings
 import math
 import torch
 import torch.nn as nn
-import numpy as np
 from tqdm import tqdm
 
-from commons.utils import split_logits_labels, get_device, build_score
+from commons.utils import split_logits_labels, get_device
 from .metric import Metrics
+from .scores import build_score
 
 
 class Predictor(nn.Module):

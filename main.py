@@ -1,9 +1,8 @@
 import argparse
-import os
 
 from commons.utils import set_seed
 from models.utils import build_model
-from datasets.utils import build_dataloader_imagenet
+from dataset.utils import build_dataloader_imagenet
 from algorithms.conf_scalings import ConformalTemperatureScaling, ConformalPlattScaling, ConformalVectorScaling
 from algorithms.scalings import Identity, TemperatureScaling, PlattScaling, VectorScaling
 from algorithms.predictor import Predictor
@@ -14,8 +13,8 @@ def main():
     parser.add_argument('--seed', type=int, default=42, help='seed')
     parser.add_argument('--trials', type=int, default=1, help='number of trials')
     parser.add_argument('--model', type=str, default='resnet50', help='model')
-    parser.add_argument('--data_dir', '-s', type=str, default='/mnt/sharedata/ssd3/common/datasets/',
-                        help='datasets name.')
+    parser.add_argument('--data_dir', '-s', type=str, default='/mnt/sharedata/ssd3/common/dataset/',
+                        help='dataset name.')
     parser.add_argument('--conformal', type=str, default='aps', help='conformal prediction')
     parser.add_argument('--alpha', type=float, default=0.1, help="error rate")
     parser.add_argument('--cal_num', type=int, default=10000, help="calibration size")

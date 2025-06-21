@@ -122,8 +122,6 @@ class ConformalPlattScaling(nn.Module):
         # print('Optimal temperature: %.3f' % torch.exp(self.temperature).item())
         out = logits * self.a + self.b
         ece_after = ece_criterion(out, labels)
-        print(f"ECE before:{ece_before}")
-        print(f"ECE after:{ece_after}")
         return 0.0, 0.0
 
     def forward(self, logits, softmax=True):

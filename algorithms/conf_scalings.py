@@ -66,16 +66,12 @@ class ConformalTemperatureScaling(nn.Module):
             loss = self.criterion1(out, labels)
             loss.backward()
             optimizer.step()
-            print(torch.exp(self.temperature))
 
             if abs(self.temperature.item() - T_old) < self.stop:
                 break
 
-        print('Optimal temperature: %.3f' % torch.exp(self.temperature).item())
         out = logits / self.temperature
         ece_after = ece_criterion(out, labels)
-        print(f"ECE before:{ece_before}")
-        print(f"ECE after:{ece_after}")
         return ece_before, ece_after
 
     def forward(self, logits, softmax=True):

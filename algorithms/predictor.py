@@ -5,7 +5,7 @@ import torch.nn as nn
 import numpy as np
 from tqdm import tqdm
 
-from .utils import split_logits_labels, get_device, build_score
+from commons.utils import split_logits_labels, get_device, build_score
 from .metric import Metrics
 
 

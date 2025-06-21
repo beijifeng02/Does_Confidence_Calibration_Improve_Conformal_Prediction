@@ -50,7 +50,7 @@ class ConformalTemperatureScaling(nn.Module):
         self.alpha = alpha
         self.temperature = nn.Parameter(torch.log(torch.tensor(1.5)).cuda())
         preprocessor = Identity(temperature=1.0)
-        self.predictor = Predictor(preprocessor=preprocessor, model=model, alpha=self.alpha)
+        self.predictor = Predictor(preprocessor=preprocessor, conformal="aps", model=model, alpha=self.alpha)
         self.lr = 0.8
         self.stop = 0.05
 
@@ -103,7 +103,7 @@ class ConformalPlattScaling(nn.Module):
         self.a = nn.Parameter(torch.tensor([1.5]).cuda())
         self.b = nn.Parameter(torch.tensor([1.5]).cuda())
         preprocessor = Identity(temperature=1.0)
-        self.predictor = Predictor(preprocessor=preprocessor, model=model, alpha=self.alpha)
+        self.predictor = Predictor(preprocessor=preprocessor, conformal="aps", model=model, alpha=self.alpha)
         self.lr = 0.5
         self.stop = 0.05
 
@@ -155,7 +155,7 @@ class ConformalVectorScaling(nn.Module):
         self.w = nn.Parameter((torch.ones(num_classes) * 1.5).cuda())
         self.b = nn.Parameter((torch.rand(num_classes) * 2.0 - 1.0).cuda())
         preprocessor = Identity(temperature=1.0)
-        self.predictor = Predictor(preprocessor=preprocessor, model=model, alpha=self.alpha)
+        self.predictor = Predictor(preprocessor=preprocessor, model=model, conformal="aps", alpha=self.alpha)
         self.lr = 0.8
         self.stop = 0.05
 

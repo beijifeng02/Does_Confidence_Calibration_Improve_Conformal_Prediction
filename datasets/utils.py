@@ -1,6 +1,4 @@
 import os
-import numpy as np
-from tqdm import tqdm
 import torch
 from torchvision import transforms, datasets
 
@@ -24,7 +22,7 @@ transform_imagenet_test = transforms.Compose([
 # ----------------------------------------------------------------------- #
 
 
-def build_dataloader_imagenet(data_dir, cal_num=10000, conf_num=5000, temp_num=5000, batch_size=512, num_workers=8):
+def build_dataloader_imagenet(data_dir, conf_num=5000, temp_num=5000, batch_size=512, num_workers=8):
     validir = os.path.join(data_dir, 'imagenet/images/val')
     testset = datasets.ImageFolder(root=validir, transform=transform_imagenet_test)
 

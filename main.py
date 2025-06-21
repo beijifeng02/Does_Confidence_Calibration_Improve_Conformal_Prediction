@@ -53,11 +53,11 @@ if __name__ == "__main__":
         preprocessor = ConformalPlattScaling(model, alpha)
     elif pre == "confvs":
         preprocessor = ConformalVectorScaling(model, alpha)
-    elif pre == "TS":
+    elif pre == "ts":
         preprocessor = TemperatureScaling()
-    elif pre == "PS":
+    elif pre == "ps":
         preprocessor = PlattScaling()
-    elif pre == "VS":
+    elif pre == "vs":
         preprocessor = VectorScaling()
     else:
         preprocessor = Identity()

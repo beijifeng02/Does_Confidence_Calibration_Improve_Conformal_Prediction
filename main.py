@@ -45,8 +45,8 @@ if __name__ == "__main__":
 
     model = build_model(model_name)
     model = model.cuda()
-    calib_calibloader, conf_calibloader, testloader = build_dataloader_imagenet(data_dir, cal_num=cal_num,
-                                                                                conf_num=conf_num, temp_num=temp_num)
+    calib_calibloader, conf_calibloader, testloader = build_dataloader_imagenet(data_dir, conf_num=conf_num,
+                                                                                temp_num=temp_num)
     if pre == "confts":
         preprocessor = ConformalTemperatureScaling(model, alpha)
     elif pre == "confps":

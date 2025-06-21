@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--seed', type=int, default=42, help='seed')
     parser.add_argument('--trials', type=int, default=1, help='number of trials')
     parser.add_argument('--model', type=str, default='resnet50', help='model')
-    parser.add_argument('--data_dir', '-s', type=str, default='/mnt/sharedata/ssd3/common/dataset/',
+    parser.add_argument('--data_dir', '-s', type=str, default='/mnt/sharedata/ssd3/common/datasets',
                         help='dataset name.')
     parser.add_argument('--conformal', type=str, default='aps', help='conformal prediction')
     parser.add_argument('--alpha', type=float, default=0.1, help="error rate")

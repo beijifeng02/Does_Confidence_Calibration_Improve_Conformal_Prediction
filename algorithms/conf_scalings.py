@@ -63,7 +63,7 @@ class ConformalTemperatureScaling(nn.Module):
             optimizer.zero_grad()
             T_old = self.temperature.item()
             out = logits / torch.exp(self.temperature)
-            loss = self.criterion1(out, labels)
+            loss = self.criterion(out, labels)
             loss.backward()
             optimizer.step()
 
